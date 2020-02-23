@@ -7,7 +7,7 @@ import time
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # 监听端口:
-s.bind(('223.104.211.245', 9999))
+s.bind(('', 7777))
 
 s.listen(5)
 print('Waiting for connection...')
@@ -36,4 +36,6 @@ while True:
     sock, addr = s.accept()
     # 创建新线程来处理TCP连接:
     t = threading.Thread(target=tcplink, args=(sock, addr))
+    #t.setDaemon(True)  # 自动结束
     t.start()
+    #t.join
