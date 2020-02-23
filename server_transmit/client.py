@@ -2,19 +2,19 @@
 
 import socket
 
-HOST = '49.235.15.235'
+HOST = '192.168.50.2'
 PORT = 1201
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 while True:
     data_recv = s.recv(1024).decode('utf-8')
     if data_recv == 'exit':
-        print('服务器关闭了连接'）
+        print('Connection closed.')
         s.close()
         break
     else:
-        print(data_recv)
-    data_to_send = input('输入消息：')
-    s.send(data_to_send)
+        print('Received:', data_recv)
+    data_to_send = input('Send:')
+    s.send(data_to_send.encode('utf-8'))
 
 
