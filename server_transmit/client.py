@@ -1,11 +1,16 @@
 # server_transmit 客户端程序
-
+"""客户端程序 ver 0.0
+"""
 import socket
 
-HOST = '192.168.50.2'
+
+# HOST = '192.168.50.2'
+HOST = '49.235.15.235'
 PORT = 1201
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
+
+
 while True:
     data_recv = s.recv(1024).decode('utf-8')
     if data_recv == 'exit':
