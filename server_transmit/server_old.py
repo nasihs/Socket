@@ -1,8 +1,5 @@
-# 服务端转发程序
-# data = self.socket.recv(1024, socket.MSG_WAITALL)  接收到指定长度才返回
 """服务端转发 ver 0.1
 客户端每发送一次才能从服务端接收一次
-先连接的客户端必须先发送？？？
 """
 
 
@@ -67,7 +64,7 @@ def main():
         print('Accept Client1 from %s : %s..' % addr1)
         print('Waiting for Client2...')
         conn2, addr2 = s.accept()
-        conn1.send(b'Connected.')
+        conn2.send(b'Connected.')
         print('Accept Client2 from %s : %s..' % addr2)
         # 开启进程处理Client消息
         t1 = threading.Thread(target=deal_client1, args=(conn1, addr1, q1, q2,))
